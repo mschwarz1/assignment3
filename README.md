@@ -2,9 +2,7 @@
     Assignment 3
     Due Oct 07
 
-    There are 40 students in this class. There are also 8 graded projects that allow group work, although we are forbidden from being in a group with the same person twice. While the instructor may have claimed that it is possible for everyone to be in a full group of four for every graded assignment, you have your doubts!
-
-    Write a program that accepts two command-line arguments: the number of students, and the maximum size of a group. The program should then print out one possible class breakdown of students grouped for each assignment.
+Write a program that accepts two command-line arguments: the number of students, and the maximum size of a group. The program should then print out one possible class breakdown of students grouped for each assignment.
 
     You do not need to print out all possible combinations of groups (if there were more than one way to split the class across the eight assignments, for example). You need only limit yourself to eight assignments. Your output can be 0-indexed, 1-indexed, or even every student's name. Your formatting may be as different from these samples as you like, provided that:
         Each line of output is a grouping for one graded assessment
