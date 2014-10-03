@@ -20,4 +20,4 @@ checkmod x y = (if mod x y == 0 then putStrLn "Yay" else putStrLn $"Cannot pair 
 --Out puts a list of tuples first element being the student ID number
 --Second being an empty list 
 --for storing the students already been grouped with
-studentstruct ss = [(x,[]) | x <- ls]
+studentstruct ss = [(x,[]) | x <- ss]
