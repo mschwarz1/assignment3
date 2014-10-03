@@ -23,7 +23,7 @@ checkmod x y = (if mod x y == 0 then putStrLn "Yay" else putStrLn $"Cannot pair 
 studentstruct ss = [(x,[x]) | x <- ss]
 
 --Takes the studentstruct
-checkstudentused ss = map snd ss
+checkstudentused ss x = map snd ss
 --	| ss == 1 "YAY"
 --	| length $ map snd ss > 1 = "something else"
 --	| otherwise	= "WHAT!?"

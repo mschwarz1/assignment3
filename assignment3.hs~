@@ -6,8 +6,9 @@ import Data.List
 main = do
 	args <- getArgs
 	progName <- getProgName
-	putStrLn head args
+	x <- head args
 	putStrLn "Me dickin"
+	putStrLn x
 	putStrLn "Arguments"
 	mapM putStrLn args
 	putStrLn "Program name is:"
