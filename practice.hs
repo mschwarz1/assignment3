@@ -21,3 +21,9 @@ checkmod x y = (if mod x y == 0 then putStrLn "Yay" else putStrLn $"Cannot pair 
 --Second being an empty list 
 --for storing the students already been grouped with
 studentstruct ss = [(x,[]) | x <- ss]
+
+--this takes lists and pairs their elements by order 
+createList :: (Integral a) => [a] -> [a] -> [a] -> [[a]]
+createList a b c
+       | length a == 1 || length b  == 1 || length c == 1 = ((head a) : (head b) : (head c) : []):[]
+       | otherwise = ((head a) : (head b) : (head c) : []):[] ++ createList (tail a) (tail b) (tail c)
