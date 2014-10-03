@@ -3,10 +3,11 @@
 
 import Data.List.Split
 
---drDre takes a list of size b and breaks it up into chunks of 8
-drDre :: (Integral a) => a -> [[a]]
-drDre 0 = [[0]]
-drDre b = chunksOf 8 [1..b]
+--anything does what dr dre does only better
+splitList :: Int -> Int -> [[Int]]
+splitList b a 
+     | a == 0 = []
+     | otherwise = chunksOf a [1..b]
 
 --eminem takes a list of lists and divided the elements into sublists of even/odd
 eminem :: (Integral a) => [[a]] -> [[a]]
