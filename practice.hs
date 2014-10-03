@@ -4,9 +4,9 @@
 import Data.List.Split
 
 --drDre takes a list of size b and breaks it up into chunks of 8
-studentgen :: (Integral a) => a -> [[a]]
-studentgen 0 = [[0]]
-studentgen b = chunksOf 8 [1..b]
+drDre :: (Integral a) => a -> [[a]]
+drDre 0 = [[0]]
+drDre b = chunksOf 8 [1..b]
 
 --eminem takes a list of lists and divided the elements into sublists of even/odd
 eminem :: (Integral a) => [[a]] -> [[a]]
