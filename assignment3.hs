@@ -1,4 +1,5 @@
 import System.Environment
+import System.IO
 import Data.List
 import System.IO
 
@@ -11,7 +12,6 @@ main = do
         putStrLn $head args
         putStrLn "Teh greup siez is: "
         putStrLn $head $tail args
-        --mapM putStrLn args
 	putStrLn "Program name is:"
 	putStrLn progName
         
