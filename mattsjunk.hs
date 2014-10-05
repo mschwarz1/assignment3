@@ -4,15 +4,16 @@
 --for storing the students already been grouped with
 studentstruct ss = [(x,[x]) | x <- ss]
 
---right now adds student to everyone 
-addstudent ss s = [(a,s:[b])|(a,[b]) <- ss]
-
+--s = the student to add
+--curstu = the tuple  where first element is the student id
+--and the second element is the list of already grouped students
+addstudent s curstu = head [ (y, s: x) | let x = snd curstu , let y = fst curstu]
 
 
 -- studentstruct !! number gives you t i is the student your checking for
-checkindivdual i t= if elem i $ snd t 
-					then putStrLn "yay"
-					else putStrLn "boo"
+checkindivdual lookingfor currentstudent= if elem lookingfor $ snd currentstudent 
+					then putStrLn "Call addstudent lookingfor currentstudent"
+					else putStrLn "Tell it to try the Next student"
 
 --Checks if the total number of students can be split into said group size
 checkmod x y = (if mod x y == 0 
