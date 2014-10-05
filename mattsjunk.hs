@@ -9,13 +9,13 @@ studentstruct ss = [(x,[x]) | x <- ss]
 --and the second element is the list of already grouped students
 addstudent s curstu = head [ (y, s: x) | let x = snd curstu , let y = fst curstu]
 
---TODO Want to be able to call addstudent if condition is true
+
 -- Return types being different is making it difficult
--- studentstruct !! number gives you t i is the student your checking for
-checkindivdual :: (Num t, Num t1) => t -> (t,[t1]) -> Either (t,[t1]) IO()
-checkindivdual lookingfor currentstudent= if elem lookingfor $ snd currentstudent 
-					then addstudent lookingfor currentstudent
-					else putStrLn "woot"
+-- studentstruct !! number gives you currentstudent looking for is the student to check for
+checkindivdual lookingfor currentstudent = 
+	case elem lookingfor $ snd currentstudent of
+		True -> Right "Already there"
+		False -> Left $ addstudent lookingfor currentstudent
 
 
 
@@ -31,6 +31,6 @@ checkmod x y = (if mod x y == 0
 --x is just the size of list (should be a way to hack it to use "length students")
 --Error about show IO cause it prints yay if finds it instead of taking real action
 --too lazy right now to figure it out
-checkall students lfor x= [checkindivdual lfor (students !! index )| index <- [1..x]]
+--checkall students lfor x= [checkindivdual lfor (students !! index )| index <- [1..x]]
 
 
