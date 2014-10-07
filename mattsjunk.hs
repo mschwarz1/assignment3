@@ -16,8 +16,8 @@ type StudentStruct = [(Int,[Int])]
 	the first student
 -}
 fixstruct index student ss = do
-					let (fh,_:sh) = splitAt (index - 1) ss
-					fh ++ student : sh 
+	let (fh,_:sh) = splitAt (index - 1) ss
+	fh ++ student : sh 
 					
 {-
 	s = the student to add
@@ -63,11 +63,11 @@ altcheckind lookingfor currentstudent =
 
 --TODO make output True for true conidtion
 --Checks if the total number of students can be split into said group size
-checkmod x y = (if mod x y == 0 
-						then putStrLn "True" 
-						else putStrLn $"Cannot pair up " ++ 
-						(show x) ++ " students into groups of " 
-						++ show(y) ++ " across eight assignments")
+checkmod x y = ( if mod x y == 0 
+	then putStrLn "True" 
+	else putStrLn $"Cannot pair up " ++ 
+	(show x) ++ " students into groups of " 
+	++ show(y) ++ " across eight assignments")
 {-
 	should iterate entire list of students
 	call checkindividual lfor = student to look for
@@ -94,9 +94,9 @@ checkmod x y = (if mod x y == 0
 
 
 program x y = do
-				let ss = studentstruct [1..x]
-				checkmod x y --last statement must be expression in so haskell doesnt bitch
-				--groupassignment ss y			
+	let ss = studentstruct [1..x]
+	checkmod x y --last statement must be expression in so haskell doesnt bitch
+	--groupassignment ss y			
 
 
 
