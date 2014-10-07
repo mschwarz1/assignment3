@@ -57,3 +57,35 @@ checkmod x y = (if mod x y == 0
 	too lazy right now to figure it out
 -}
 checkall students lfor x= [checkindivdual lfor (students !! index )| index <- [1..x]]
+
+{-
+
+	TODO 
+	Actually making it do things other then just initialize a base structure
+
+-}
+main :: IO ()
+main = 
+     do
+	args <- getArgs
+	progName <- getProgName
+        let students = (head args)
+        let grpsize = head $tail args
+	putStrLn "The number of students are:"
+        putStrLn students
+        putStrLn "The group size is: "
+        putStrLn grpsize
+	putStrLn "Program name is:"
+	putStrLn progName
+	let studentAmt = read students :: Integer
+	let listStudents = [1..studentAmt]
+
+	let ss = studentstruct listStudents
+
+             
+        return ()
+
+
+
+
+
