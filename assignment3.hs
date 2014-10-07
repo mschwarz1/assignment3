@@ -12,8 +12,8 @@ main =
      do
 	args <- getArgs
 	progName <- getProgName
-        let students = (head args)
-        let grpsize = head $tail args
+        let students = read(head args) :: Int       --now we can use ints!
+        let grpsize = read(head $tail args) :: Int
 	putStrLn "The number of stoodents aer:"
         putStrLn students
         putStrLn "Teh greup siez is: "
