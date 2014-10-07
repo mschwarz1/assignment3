@@ -5,6 +5,7 @@
 	for storing the students already been grouped with
 -}
 --studentstruct :: Int => [Int] -> StudentStruct
+studentstruct :: [t] -> [(t, [t])]
 studentstruct ss = [(x,[x]) | x <- ss]
 
 type StudentStruct = [(Int,[Int])]
@@ -15,6 +16,7 @@ type StudentStruct = [(Int,[Int])]
 	Index value starts at 1 not zero so studentId value 1 will give you 
 	the first student
 -}
+fixstruct :: Int -> a -> [a] -> [a]
 fixstruct index student ss = do
 	let (fh,_:sh) = splitAt (index - 1) ss
 	fh ++ student : sh 
@@ -24,6 +26,7 @@ fixstruct index student ss = do
 	curstu = the tuple  where first element is the student id
 	and the second element is the list of already grouped students
 -}
+addstudent :: a -> (t, [a]) -> (t, [a])
 addstudent s curstu = head [ (y, s: x) | let x = snd curstu , let y = fst curstu]
 
 
@@ -33,8 +36,7 @@ addstudent s curstu = head [ (y, s: x) | let x = snd curstu , let y = fst curstu
 	n = the student id to remove
 	l = the list of students not yet grouped
 -}
---TODO get type signature right
---updategroupedlist :: (Int x Int [y]) => x -> [y] -> [z]
+updategroupedlist :: Eq a => a -> [a] -> [a]
 updategroupedlist n l = filter (not . (==n)) l 
 
 {-
@@ -44,7 +46,8 @@ updategroupedlist n l = filter (not . (==n)) l
 	otherwise will add student to group
 	TODO needs to the update grouped already list
 -}
-checkindivdual lookingfor currentstudent = 
+checkindividual :: Eq a => a -> (t, [a]) -> Either (t, [a]) Bool
+checkindividual lookingfor currentstudent = 
 	case elem lookingfor $ snd currentstudent of
 		True -> Right True
 		False -> Left $ addstudent lookingfor currentstudent
@@ -63,6 +66,7 @@ altcheckind lookingfor currentstudent =
 
 --TODO make output True for true conidtion
 --Checks if the total number of students can be split into said group size
+checkmod :: (Integral a, Show a) => a -> a -> IO ()
 checkmod x y = ( if mod x y == 0 
 	then putStrLn "True" 
 	else putStrLn $"Cannot pair up " ++ 
@@ -71,11 +75,10 @@ checkmod x y = ( if mod x y == 0
 {-
 	should iterate entire list of students
 	call checkindividual lfor = student to look for
-	x is just the size of list (should be a way to hack it to use "length students")
-	Error about show IO cause it prints yay if finds it instead of taking real action
-	too lazy right now to figure it out
+	x is just the size of list
 -}
---checkall students lfor x= [checkindivdual lfor (students !! index )| index <- [1..x]]
+checkall :: Eq a => [(t, [a])] -> a -> [Either (t, [a]) Bool]
+checkall students lfor = [ checkindividual lfor (students !! index )| index <- [1..((length students )-1)]]
 
 {-
 	Keep running till current group size is filled
